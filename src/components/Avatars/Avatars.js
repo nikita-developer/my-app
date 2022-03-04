@@ -23,6 +23,7 @@ class Avatars extends Component {
                     img: '/media/Avatars/logo.png',
                 },
             ],
+            human2: [],
             addAvatarImg: '',
             addAvatarName: '',
             addAvatarCountry: '',
@@ -30,6 +31,7 @@ class Avatars extends Component {
 
         this.addAvatar = this.addAvatar.bind(this)
         this.inputChange = this.inputChange.bind(this)
+        this.search = this.search.bind(this)
     }
 
     render() {
@@ -37,11 +39,12 @@ class Avatars extends Component {
             <div className="avatars">
                 <div className="avatars__wrapper">
                     <div className="avatars__head">
+                        <input className="avatars__field" onChange={this.search}/>
                         <input className="avatars__field" value={this.state.addAvatarName} onChange={this.inputChange}/>
                         <button className="avatars__btn" onClick={this.addAvatar}>Добавить</button>
                     </div>
                     <div className="avatars__body">
-                        {this.avtarItem()}
+                        {(this.state.human2.length) ? this.avtarItem(this.state.human2) : this.avtarItem(this.state.human)}
                     </div>
                 </div>
             </div>
@@ -66,8 +69,20 @@ class Avatars extends Component {
         })
     }
 
-    avtarItem() {
-        return (this.state.human.map((item, key) =>
+    search(e) {
+        var newState =  this.state.human.filter(function(item) {
+            return item.name.toLowerCase() == e.target.value.toLowerCase()
+        });
+
+        if(newState) {
+            this.setState({
+                human2: newState
+            })
+        }
+    }
+
+    avtarItem(data) {
+        return (data.map((item, key) =>
                 <div className="avatars__item" key={key}>
                     <div className="avatars__img">
                         <img src={item.img} alt="" />

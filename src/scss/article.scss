@@ -1,0 +1,11 @@
+
+.article {
+    flex-grow: 1;
+    background-color: var(--gray);
+    border-radius: var(--base-radius);
+    padding: 1em;
+
+    &_intro-main {
+        margin: 1em;
+    }
+}

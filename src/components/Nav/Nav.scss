@@ -1,0 +1,17 @@
+
+.nav {
+    margin-right: -1em;
+
+    &__link {
+        display: inline-block;
+        color: var(--white);
+        text-decoration: none;
+        opacity: .8;
+        padding: .5em 1em;
+        transition: .3s ease opacity;
+
+        &.active {
+            opacity: 1;
+        }
+    }
+}

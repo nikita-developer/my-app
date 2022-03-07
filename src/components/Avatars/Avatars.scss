@@ -1,0 +1,29 @@
+
+.avatars__body {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -.5em;
+}
+
+.avatars__card {
+    flex: 0 0 auto;
+    width: calc(20% - 1em);
+    border: 1px solid var(--gray-border);
+    margin: .5em;
+    padding: .5em;
+}
+
+.avatars__media {
+    padding-top: 100%;
+    margin: -.5em -.5em 0 -.5em;
+    background-color: gray;
+    margin-bottom: .5em;
+
+    img {
+        display: none;
+    }
+}
+
+.avatars__name {
+    font-size: 14px;
+}

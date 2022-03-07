@@ -4,9 +4,8 @@
     flex-grow: 0;
     width: 280px;
     background-color: var(--dark-blue);
-    border-radius: var(--base-radius);
 
     &_left {
-        margin: 1em 0 1em 1em;
+        margin-left: 0;
     }
 }

@@ -1,10 +1,10 @@
 
 import React, {Component} from "react";
 import './Avatars.scss';
-import axios from "axios";
-axios.get('https://api-maps.yandex.ru/2.1/?apikey=ваш API-ключ&lang=ru_RU').then((response) => {
-    console.log(response);
-});
+// import axios from "axios";
+// axios.get('https://api-maps.yandex.ru/2.1/?apikey=ваш API-ключ&lang=ru_RU').then((response) => {
+//     console.log(response);
+// });
 
 // Имя сервера БД - server251.hosting.reg.ru
 // Имя пользователя (логин) БД - u1305374_spas

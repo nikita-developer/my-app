@@ -1,14 +1,36 @@
 
 import React, {Component} from "react"
 import './Avatars.scss'
-import dataAvatars from './dataAvatars.json'
-import axios from "axios"
+// import dataAvatars from './dataAvatars.json'
+// import axios from "axios"
 
 class Avatars extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            dataAvatars: dataAvatars.users
+            // dataAvatars: dataAvatars.users
+            dataAvatars: [
+                {
+                    name: "Fred",
+                    img: "/media/avatars/img-1.jpg"
+                },
+                {
+                    name: "Никита",
+                    img: "/media/avatars/img-1.jpg"
+                },
+                {
+                    name: "Дима",
+                    img: "/media/avatars/img-1.jpg"
+                },
+                {
+                    name: "Максим",
+                    img: "/media/avatars/img-1.jpg"
+                },
+                {
+                    name: "Евген",
+                    img: "/media/avatars/img-1.jpg"
+                }
+            ]
         }
     }
 
@@ -33,7 +55,7 @@ class Avatars extends Component {
             return (
                 <div className="avatars">
                     <div className="avatars__body">
-                        <div>1234</div>
+                        <div>Пусто</div>
                     </div>
                 </div>
             )

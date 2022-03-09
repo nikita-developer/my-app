@@ -3,6 +3,22 @@
         {
             "name": "Fred",
             "img": "/media/avatars/img-1.jpg"
+        },
+        {
+            "name": "Никита",
+            "img": "/media/avatars/img-1.jpg"
+        },
+        {
+            "name": "Дима",
+            "img": "/media/avatars/img-1.jpg"
+        },
+        {
+            "name": "Максим",
+            "img": "/media/avatars/img-1.jpg"
+        },
+        {
+            "name": "Евген",
+            "img": "/media/avatars/img-1.jpg"
         }
     ]
 }

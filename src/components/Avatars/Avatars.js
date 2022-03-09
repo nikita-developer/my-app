@@ -1,46 +1,23 @@
 
 import React, {Component} from "react"
 import './Avatars.scss'
-// import dataAvatars from './dataAvatars.json'
-// import axios from "axios"
+import axios from "axios"
 
 class Avatars extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            // dataAvatars: dataAvatars.users
-            dataAvatars: [
-                {
-                    name: "Fred",
-                    img: "/media/avatars/img-1.jpg"
-                },
-                {
-                    name: "Никита",
-                    img: "/media/avatars/img-1.jpg"
-                },
-                {
-                    name: "Дима",
-                    img: "/media/avatars/img-1.jpg"
-                },
-                {
-                    name: "Максим",
-                    img: "/media/avatars/img-1.jpg"
-                },
-                {
-                    name: "Евген",
-                    img: "/media/avatars/img-1.jpg"
-                }
-            ]
+            dataAvatars: false
         }
     }
 
-    // componentDidMount() {
-    //     axios.get(dataAvatars).then(res => {
-    //         this.setState({
-    //             users: res.data.users,
-    //         })
-    //     });
-    // }
+    componentDidMount() {
+        axios.get('/Avatars/dataAvatars.json').then(res => {
+            this.setState({
+                dataAvatars: res.data.users
+            })
+        });
+    }
 
     render() {
         if(this.state.dataAvatars) {

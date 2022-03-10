@@ -1,6 +1,6 @@
 <?php
     // Открыть файл data.json
-    $file = file_get_contents('dataAvatars.json');
+    $file = file_get_contents('/dataAvatars.json');
 
     // Декодировать в массив
     $taskList = json_decode($file, TRUE); 
@@ -14,7 +14,8 @@
     // Перекодировать в формат и записать в файл.
     file_put_contents('dataAvatars.json', json_encode($taskList));
     
-    // unset($taskList);
-    echo($taskList);
+    unset($taskList);
 
+    // ссылка на статью
+    // https://www.delay-delo.com/content/rabota-php-c-json-dobavlenie-udalenie-i-obnovlenie-v-fayle
 ?>

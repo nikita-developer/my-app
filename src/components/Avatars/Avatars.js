@@ -1,52 +1,42 @@
 
 import React, {Component} from "react"
+import AvatarCard from './AvatarCard'
+import AvatarFilter from './AvatarFilter'
 import './Avatars.scss'
-import axios from "axios"
 
 class Avatars extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            dataAvatars: false
+            filterText: 'Fred'
         }
+
+        this.handleFilterTextChange = this.handleFilterTextChange.bind(this)
     }
 
-    componentDidMount() {
-        axios.get('/Avatars/dataAvatars.json').then(res => {
-            this.setState({
-                dataAvatars: res.data.users
-            })
+    handleFilterTextChange(filterText) {
+        this.setState({
+            filterText: filterText
         });
     }
 
     render() {
-        if(this.state.dataAvatars) {
-            return (
-                <div className="avatars">
-                    <div className="avatars__body">
-                        {this.avtarItem()}
-                    </div>
+        return(
+            <div className="avatars">
+                <div className="avatars__header">
+                    <AvatarFilter 
+                        filterText={this.state.filterText}
+                        onFilterTextChange={this.handleFilterTextChange}
+                    />
                 </div>
-            )
-        } else {
-            return (
-                <div className="avatars">
-                    <div className="avatars__body">
-                        <div>Пусто</div>
-                    </div>
+                <div className="avatars__body">
+                    <AvatarCard 
+                        avatars={this.props.avatars} 
+                        filterText={this.state.filterText}
+                    />
                 </div>
-            )
-        }
-    }
-
-    avtarItem() {
-        return (this.state.dataAvatars.map((user, key) =>
-                <figure className="avatars__card" key={key}>
-                    <div className="avatars__media"><img src={user.img} alt="name" /></div>
-                    <figcaption className="avatars__name">{user.name}</figcaption>
-                </figure>
-            )
-        );
+            </div>
+        )
     }
 }
 

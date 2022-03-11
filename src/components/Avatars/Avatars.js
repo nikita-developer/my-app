@@ -8,7 +8,7 @@ class Avatars extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            filterText: 'Fred'
+            filterText: ''
         }
 
         this.handleFilterTextChange = this.handleFilterTextChange.bind(this)

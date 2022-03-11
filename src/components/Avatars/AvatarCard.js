@@ -5,9 +5,7 @@ class AvatarCard extends Component {
         const searchText = this.props.filterText.toLowerCase()
 
         const card = this.props.avatars.filter(function (e) {
-            if(e.name.toLowerCase().indexOf(searchText) !== -1) {
-                return e.name
-            }
+            return e.name.toLowerCase().indexOf(searchText) !== -1
         });
 
         const collectionCard = card.map((avatar, key) =>

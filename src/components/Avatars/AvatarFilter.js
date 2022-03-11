@@ -11,12 +11,19 @@ class AvatarFilter extends Component {
     }
 
     render() {
+        const collectionCountry = this.props.country.map((item, key) =>
+            <option key={key} value={item.country}>{item.country}</option>
+        )
+
         return(
             <div>
                 <input
                     value={this.props.filterText}
                     onChange={this.handleFilterTextChange}
                 />
+                <select>
+                    {collectionCountry}
+                </select>
             </div>
         )
     }

@@ -8,7 +8,8 @@ class Avatars extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            filterText: ''
+            filterText: '',
+            country: '',
         }
 
         this.handleFilterTextChange = this.handleFilterTextChange.bind(this)
@@ -27,6 +28,7 @@ class Avatars extends Component {
                     <AvatarFilter 
                         filterText={this.state.filterText}
                         onFilterTextChange={this.handleFilterTextChange}
+                        country={this.props.country}
                     />
                 </div>
                 <div className="avatars__body">

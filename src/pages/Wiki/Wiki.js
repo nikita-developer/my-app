@@ -23,23 +23,28 @@ class Wiki extends Component {
 const AVATARS = [
     {
         name: "Fred",
-        img: "/Avatars/media/img-1.jpg"
+        img: "/Avatars/media/img-1.jpg",
+        country: "Россия",
     },
     {
         name: "Никита",
-        img: "/Avatars/media/img-1.jpg"
+        img: "/Avatars/media/img-1.jpg",
+        country: "Франция",
     },
     {
         name: "Дима",
-        img: "/Avatars/media/img-1.jpg"
+        img: "/Avatars/media/img-1.jpg",
+        country: "Германия",
     },
     {
         name: "Максим",
-        img: "/Avatars/media/img-1.jpg"
+        img: "/Avatars/media/img-1.jpg",
+        country: "Германия",
     },
     {
         name: "Евген",
-        img: "/Avatars/media/img-1.jpg"
+        img: "/Avatars/media/img-1.jpg",
+        country: "Россия",
     }
 ]
 

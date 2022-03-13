@@ -4,10 +4,15 @@ class AvatarFilter extends Component {
     constructor(props) {
         super(props)
         this.handleFilterTextChange = this.handleFilterTextChange.bind(this)
+        this.handleFilterCountryChange = this.handleFilterCountryChange.bind(this)
     }
 
     handleFilterTextChange(e) {
         this.props.onFilterTextChange(e.target.value)
+    }
+
+    handleFilterCountryChange(e) {
+        this.props.onFilterSelectChange(e.target.value)
     }
 
     render() {
@@ -21,7 +26,9 @@ class AvatarFilter extends Component {
                     value={this.props.filterText}
                     onChange={this.handleFilterTextChange}
                 />
-                <select>
+                <select
+                    onChange={this.handleFilterCountryChange}
+                >
                     {collectionCountry}
                 </select>
             </div>

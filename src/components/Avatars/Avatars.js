@@ -9,16 +9,23 @@ class Avatars extends Component {
         super(props)
         this.state = {
             filterText: '',
-            country: '',
+            thisCountry: 'Германия',
         }
 
         this.handleFilterTextChange = this.handleFilterTextChange.bind(this)
+        this.handleFilterCountryChange = this.handleFilterCountryChange.bind(this)
     }
 
     handleFilterTextChange(filterText) {
         this.setState({
             filterText: filterText
         });
+    }
+
+    handleFilterCountryChange(thisCountry) {
+        this.setState({
+            thisCountry: thisCountry
+        })
     }
 
     render() {
@@ -29,12 +36,14 @@ class Avatars extends Component {
                         filterText={this.state.filterText}
                         onFilterTextChange={this.handleFilterTextChange}
                         country={this.props.country}
+                        onFilterSelectChange={this.handleFilterCountryChange}
                     />
                 </div>
                 <div className="avatars__body">
                     <AvatarCard 
                         avatars={this.props.avatars} 
                         filterText={this.state.filterText}
+                        thisCountry={this.state.thisCountry}
                     />
                 </div>
             </div>

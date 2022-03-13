@@ -3,9 +3,14 @@ import React, { Component } from "react";
 class AvatarCard extends Component {
     render() {
         const searchText = this.props.filterText.toLowerCase()
+        const searchCountry = this.props.thisCountry
 
-        const card = this.props.avatars.filter(function (e) {
+        let card = this.props.avatars.filter(function (e) {
             return e.name.toLowerCase().indexOf(searchText) !== -1
+        });
+
+        card = card.filter(function (e) {
+            return e.country === searchCountry
         });
 
         const collectionCard = card.map((avatar, key) =>

@@ -3,34 +3,40 @@ import { Component } from "react"
 class AvatarFilter extends Component {
     constructor(props) {
         super(props)
-        this.handleFilterTextChange = this.handleFilterTextChange.bind(this)
+        this.handleNameChange = this.handleNameChange.bind(this)
         this.handleFilterCountryChange = this.handleFilterCountryChange.bind(this)
+        this.handleFilterGenderChange = this.handleFilterGenderChange.bind(this)
     }
 
-    handleFilterTextChange(e) {
-        this.props.onFilterTextChange(e.target.value)
+    handleNameChange(e) {
+        this.props.onNameChange(e.target.value)
     }
 
     handleFilterCountryChange(e) {
         this.props.onFilterSelectChange(e.target.value)
     }
 
+    handleFilterGenderChange(e) {
+        this.props.onFilterGenderChange(e.target.value)
+    }
+
     render() {
-        const collectionCountry = this.props.country.map((item, key) =>
+        const countrySelect = this.props.country.map((item, key) =>
             <option key={key} value={item.country}>{item.country}</option>
+        )
+
+        const genderSelect = this.props.gender.map((item, key) =>
+            <option key={key} value={item.gender}>{item.gender}</option>
         )
 
         return(
             <div>
                 <input
-                    value={this.props.filterText}
-                    onChange={this.handleFilterTextChange}
+                    value={this.props.name}
+                    onChange={this.handleNameChange}
                 />
-                <select
-                    onChange={this.handleFilterCountryChange}
-                >
-                    {collectionCountry}
-                </select>
+                <select onChange={this.handleFilterCountryChange}>{countrySelect}</select>
+                <select onChange={this.handleFilterGenderChange}>{genderSelect}</select>
             </div>
         )
     }

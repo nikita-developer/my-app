@@ -8,23 +8,31 @@ class Avatars extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            filterText: '',
-            thisCountry: 'Германия',
+            name: '',
+            country: this.props.all,
+            gender: this.props.all,
         }
 
-        this.handleFilterTextChange = this.handleFilterTextChange.bind(this)
+        this.handleNameChange = this.handleNameChange.bind(this)
         this.handleFilterCountryChange = this.handleFilterCountryChange.bind(this)
+        this.handleFilterGenderChange = this.handleFilterGenderChange.bind(this)
     }
 
-    handleFilterTextChange(filterText) {
+    handleNameChange(name) {
         this.setState({
-            filterText: filterText
+            name: name
         });
     }
 
-    handleFilterCountryChange(thisCountry) {
+    handleFilterCountryChange(country) {
         this.setState({
-            thisCountry: thisCountry
+            country: country
+        })
+    }
+
+    handleFilterGenderChange(gender) {
+        this.setState({
+            gender: gender
         })
     }
 
@@ -33,17 +41,21 @@ class Avatars extends Component {
             <div className="avatars">
                 <div className="avatars__header">
                     <AvatarFilter 
-                        filterText={this.state.filterText}
-                        onFilterTextChange={this.handleFilterTextChange}
+                        name={this.state.name}
+                        onNameChange={this.handleNameChange}
                         country={this.props.country}
+                        gender={this.props.gender}
                         onFilterSelectChange={this.handleFilterCountryChange}
+                        onFilterGenderChange={this.handleFilterGenderChange}
                     />
                 </div>
                 <div className="avatars__body">
                     <AvatarCard 
                         avatars={this.props.avatars} 
-                        filterText={this.state.filterText}
-                        thisCountry={this.state.thisCountry}
+                        all={this.props.all} 
+                        name={this.state.name}
+                        country={this.state.country}
+                        gender={this.state.gender}
                     />
                 </div>
             </div>

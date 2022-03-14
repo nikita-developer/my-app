@@ -12,7 +12,9 @@ class Wiki extends Component {
                 <article className="article article_intro-main">
                     <Avatars 
                         avatars={AVATARS} 
+                        all={ALL} 
                         country={COUNTRY}
+                        gender={GENDER}
                     />
                 </article>
             </React.Fragment>
@@ -25,30 +27,58 @@ const AVATARS = [
         name: "Fred",
         img: "/Avatars/media/img-1.jpg",
         country: "Россия",
+        gender: 'Муж',
     },
     {
         name: "Никита",
         img: "/Avatars/media/img-1.jpg",
         country: "Франция",
+        gender: 'Муж',
+    },
+    {
+        name: "Саша Грей",
+        img: "/Avatars/media/img-1.jpg",
+        country: "Россия",
+        gender: 'Жен',
     },
     {
         name: "Дима",
         img: "/Avatars/media/img-1.jpg",
         country: "Германия",
+        gender: 'Муж',
+    },
+    {
+        name: "Ava Adams",
+        img: "/Avatars/media/img-1.jpg",
+        country: "Америка",
+        gender: 'Жен',
     },
     {
         name: "Максим",
         img: "/Avatars/media/img-1.jpg",
         country: "Германия",
+        gender: 'Муж',
     },
     {
         name: "Евген",
         img: "/Avatars/media/img-1.jpg",
         country: "Россия",
-    }
+        gender: 'Муж',
+    },
+    {
+        name: "Анастасия",
+        img: "/Avatars/media/img-1.jpg",
+        country: "Россия",
+        gender: 'Жен',
+    },
 ]
 
+const ALL = 'Все'
+
 const COUNTRY = [
+    {
+        country: "Все",
+    },
     {
         country: "Россия",
     },
@@ -57,6 +87,21 @@ const COUNTRY = [
     },
     {
         country: "Германия",
+    },
+    {
+        country: "Америка",
+    },
+]
+
+const GENDER = [
+    {
+        gender: "Все",
+    },
+    {
+        gender: "Муж",
+    },
+    {
+        gender: "Жен",
     },
 ]
 

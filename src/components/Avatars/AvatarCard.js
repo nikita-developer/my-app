@@ -2,16 +2,26 @@ import React, { Component } from "react";
 
 class AvatarCard extends Component {
     render() {
-        const searchText = this.props.filterText.toLowerCase()
-        const searchCountry = this.props.thisCountry
+        const name = this.props.name.toLowerCase()
+        const country = this.props.country
+        const gender = this.props.gender
+        const all = this.props.all
 
         let card = this.props.avatars.filter(function (e) {
-            return e.name.toLowerCase().indexOf(searchText) !== -1
+            return e.name.toLowerCase().indexOf(name) !== -1
         });
 
-        card = card.filter(function (e) {
-            return e.country === searchCountry
-        });
+        if(country !== all) {
+            card = card.filter(function (e) {
+                return e.country === country
+            });
+        }
+
+        if(gender !== all) {
+            card = card.filter(function (e) {
+                return e.gender === gender
+            });
+        }
 
         const collectionCard = card.map((avatar, key) =>
             <figure className="avatars__card" key={key}>
@@ -21,9 +31,7 @@ class AvatarCard extends Component {
         )
 
         return(
-            <React.Fragment>
-                {collectionCard}
-            </React.Fragment>
+            <React.Fragment>{collectionCard}</React.Fragment>
         )
     }
 }

@@ -9,9 +9,9 @@ class Avatars extends Component {
         super(props)
         this.state = {
             name: '',
-            country: this.props.all,
-            gender: this.props.all,
-            race: this.props.all,
+            country: this.props.avatars.all,
+            gender: this.props.avatars.all,
+            race: this.props.avatars.all,
         }
 
         this.handleNameChange = this.handleNameChange.bind(this)
@@ -50,10 +50,10 @@ class Avatars extends Component {
                 <div className="avatars__header">
                     <AvatarFilter 
                         name={this.state.name}
+                        country={this.props.avatars.country}
+                        gender={this.props.avatars.gender}
+                        race={this.props.avatars.race}
                         onNameChange={this.handleNameChange}
-                        country={this.props.country}
-                        gender={this.props.gender}
-                        race={this.props.race}
                         onFilterSelectChange={this.handleFilterCountryChange}
                         onFilterGenderChange={this.handleFilterGenderChange}
                         onFilterRaceChange={this.handleFilterRaceChange}
@@ -61,8 +61,8 @@ class Avatars extends Component {
                 </div>
                 <div className="avatars__body">
                     <AvatarCard 
-                        avatars={this.props.avatars} 
-                        all={this.props.all} 
+                        humans={this.props.avatars.humans} 
+                        all={this.props.avatars.all} 
                         name={this.state.name}
                         country={this.state.country}
                         gender={this.state.gender}

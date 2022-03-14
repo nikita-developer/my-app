@@ -4,25 +4,25 @@ class AvatarFilter extends Component {
     constructor(props) {
         super(props)
         this.handleNameChange = this.handleNameChange.bind(this)
-        this.handleFilterCountryChange = this.handleFilterCountryChange.bind(this)
-        this.handleFilterGenderChange = this.handleFilterGenderChange.bind(this)
-        this.handleFilterRaceChange = this.handleFilterRaceChange.bind(this)
+        this.handleCountryChange = this.handleCountryChange.bind(this)
+        this.handleGenderChange = this.handleGenderChange.bind(this)
+        this.handleRaceChange = this.handleRaceChange.bind(this)
     }
 
     handleNameChange(e) {
         this.props.onNameChange(e.target.value)
     }
 
-    handleFilterCountryChange(e) {
-        this.props.onFilterSelectChange(e.target.value)
+    handleCountryChange(e) {
+        this.props.onCountryChange(e.target.value)
     }
 
-    handleFilterGenderChange(e) {
-        this.props.onFilterGenderChange(e.target.value)
+    handleGenderChange(e) {
+        this.props.onGenderChange(e.target.value)
     }
 
-    handleFilterRaceChange(e) {
-        this.props.onFilterRaceChange(e.target.value)
+    handleRaceChange(e) {
+        this.props.onRaceChange(e.target.value)
     }
 
     render() {
@@ -44,9 +44,9 @@ class AvatarFilter extends Component {
                     value={this.props.name}
                     onChange={this.handleNameChange}
                 />
-                <select onChange={this.handleFilterCountryChange}>{countrySelect}</select>
-                <select onChange={this.handleFilterGenderChange}>{genderSelect}</select>
-                <select onChange={this.handleFilterRaceChange}>{raceSelect}</select>
+                <select onChange={this.handleCountryChange}>{countrySelect}</select>
+                <select onChange={this.handleGenderChange}>{genderSelect}</select>
+                <select onChange={this.handleRaceChange}>{raceSelect}</select>
             </div>
         )
     }

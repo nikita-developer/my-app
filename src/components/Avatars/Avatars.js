@@ -15,9 +15,9 @@ class Avatars extends Component {
         }
 
         this.handleNameChange = this.handleNameChange.bind(this)
-        this.handleFilterCountryChange = this.handleFilterCountryChange.bind(this)
-        this.handleFilterGenderChange = this.handleFilterGenderChange.bind(this)
-        this.handleFilterRaceChange = this.handleFilterRaceChange.bind(this)
+        this.handleCountryChange = this.handleCountryChange.bind(this)
+        this.handleGenderChange = this.handleGenderChange.bind(this)
+        this.handleRaceChange = this.handleRaceChange.bind(this)
     }
 
     handleNameChange(name) {
@@ -26,19 +26,19 @@ class Avatars extends Component {
         });
     }
 
-    handleFilterCountryChange(country) {
+    handleCountryChange(country) {
         this.setState({
             country: country
         })
     }
 
-    handleFilterGenderChange(gender) {
+    handleGenderChange(gender) {
         this.setState({
             gender: gender
         })
     }
 
-    handleFilterRaceChange(race) {
+    handleRaceChange(race) {
         this.setState({
             race: race
         })
@@ -54,9 +54,9 @@ class Avatars extends Component {
                         gender={this.props.avatars.gender}
                         race={this.props.avatars.race}
                         onNameChange={this.handleNameChange}
-                        onFilterSelectChange={this.handleFilterCountryChange}
-                        onFilterGenderChange={this.handleFilterGenderChange}
-                        onFilterRaceChange={this.handleFilterRaceChange}
+                        onCountryChange={this.handleCountryChange}
+                        onGenderChange={this.handleGenderChange}
+                        onRaceChange={this.handleRaceChange}
                     />
                 </div>
                 <div className="avatars__body">

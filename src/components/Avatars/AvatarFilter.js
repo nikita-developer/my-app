@@ -27,15 +27,15 @@ class AvatarFilter extends Component {
 
     render() {
         const countrySelect = this.props.country.map((item, key) =>
-            <option key={key} value={item.country}>{item.country}</option>
+            <option key={key} value={item}>{item}</option>
         )
 
         const genderSelect = this.props.gender.map((item, key) =>
-            <option key={key} value={item.gender}>{item.gender}</option>
+            <option key={key} value={item}>{item}</option>
         )
 
         const raceSelect = this.props.race.map((item, key) =>
-            <option key={key} value={item.gender}>{item.race}</option>
+            <option key={key} value={item}>{item}</option>
         )
 
         return(

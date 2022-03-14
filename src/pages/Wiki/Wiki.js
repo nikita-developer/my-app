@@ -21,24 +21,9 @@ class Wiki extends Component {
 
 const avatars = {
     all: 'Все',
-    country: [
-        {country: "Все"},
-        {country: "Россия"},
-        {country: "Франция"},
-        {country: "Германия"},
-        {country: "Америка"},
-    ],
-    gender: [
-        {gender: "Все"},
-        {gender: "Муж"},
-        {gender: "Жен"},
-    ],
-    race: [
-        {race: "Все"},
-        {race: "Евразийская"},
-        {race: "Азиатско-американская"},
-        {race: "Экваториальная"},
-    ],
+    country: [ "Все", "Россия", "Франция", "Германия", "Америка"],
+    gender: ["Все", "Муж", "Жен"],
+    race: ["Все", "Евразийская", "Азиатско-американская", "Экваториальная"],
     humans: [
         {
             name: "Fred",

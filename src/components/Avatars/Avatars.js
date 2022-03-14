@@ -11,11 +11,13 @@ class Avatars extends Component {
             name: '',
             country: this.props.all,
             gender: this.props.all,
+            race: this.props.all,
         }
 
         this.handleNameChange = this.handleNameChange.bind(this)
         this.handleFilterCountryChange = this.handleFilterCountryChange.bind(this)
         this.handleFilterGenderChange = this.handleFilterGenderChange.bind(this)
+        this.handleFilterRaceChange = this.handleFilterRaceChange.bind(this)
     }
 
     handleNameChange(name) {
@@ -36,6 +38,12 @@ class Avatars extends Component {
         })
     }
 
+    handleFilterRaceChange(race) {
+        this.setState({
+            race: race
+        })
+    }
+
     render() {
         return(
             <div className="avatars">
@@ -45,8 +53,10 @@ class Avatars extends Component {
                         onNameChange={this.handleNameChange}
                         country={this.props.country}
                         gender={this.props.gender}
+                        race={this.props.race}
                         onFilterSelectChange={this.handleFilterCountryChange}
                         onFilterGenderChange={this.handleFilterGenderChange}
+                        onFilterRaceChange={this.handleFilterRaceChange}
                     />
                 </div>
                 <div className="avatars__body">
@@ -56,6 +66,7 @@ class Avatars extends Component {
                         name={this.state.name}
                         country={this.state.country}
                         gender={this.state.gender}
+                        race={this.state.race}
                     />
                 </div>
             </div>

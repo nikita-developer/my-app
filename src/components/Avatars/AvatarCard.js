@@ -5,6 +5,7 @@ class AvatarCard extends Component {
         const name = this.props.name.toLowerCase()
         const country = this.props.country
         const gender = this.props.gender
+        const race = this.props.race
         const all = this.props.all
 
         let card = this.props.avatars.filter(function (e) {
@@ -20,6 +21,12 @@ class AvatarCard extends Component {
         if(gender !== all) {
             card = card.filter(function (e) {
                 return e.gender === gender
+            });
+        }
+
+        if(race !== all) {
+            card = card.filter(function (e) {
+                return e.race === race
             });
         }
 

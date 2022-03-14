@@ -6,6 +6,7 @@ class AvatarFilter extends Component {
         this.handleNameChange = this.handleNameChange.bind(this)
         this.handleFilterCountryChange = this.handleFilterCountryChange.bind(this)
         this.handleFilterGenderChange = this.handleFilterGenderChange.bind(this)
+        this.handleFilterRaceChange = this.handleFilterRaceChange.bind(this)
     }
 
     handleNameChange(e) {
@@ -20,6 +21,10 @@ class AvatarFilter extends Component {
         this.props.onFilterGenderChange(e.target.value)
     }
 
+    handleFilterRaceChange(e) {
+        this.props.onFilterRaceChange(e.target.value)
+    }
+
     render() {
         const countrySelect = this.props.country.map((item, key) =>
             <option key={key} value={item.country}>{item.country}</option>
@@ -27,6 +32,10 @@ class AvatarFilter extends Component {
 
         const genderSelect = this.props.gender.map((item, key) =>
             <option key={key} value={item.gender}>{item.gender}</option>
+        )
+
+        const raceSelect = this.props.race.map((item, key) =>
+            <option key={key} value={item.gender}>{item.race}</option>
         )
 
         return(
@@ -37,6 +46,7 @@ class AvatarFilter extends Component {
                 />
                 <select onChange={this.handleFilterCountryChange}>{countrySelect}</select>
                 <select onChange={this.handleFilterGenderChange}>{genderSelect}</select>
+                <select onChange={this.handleFilterRaceChange}>{raceSelect}</select>
             </div>
         )
     }

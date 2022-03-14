@@ -15,6 +15,7 @@ class Wiki extends Component {
                         all={ALL} 
                         country={COUNTRY}
                         gender={GENDER}
+                        race={RACE}
                     />
                 </article>
             </React.Fragment>
@@ -28,48 +29,56 @@ const AVATARS = [
         img: "/Avatars/media/img-1.jpg",
         country: "Россия",
         gender: 'Муж',
+        race: 'Азиатско-американская',
     },
     {
         name: "Никита",
         img: "/Avatars/media/img-1.jpg",
         country: "Франция",
         gender: 'Муж',
+        race: 'Евразийская',
     },
     {
         name: "Саша Грей",
         img: "/Avatars/media/img-1.jpg",
         country: "Россия",
         gender: 'Жен',
+        race: 'Евразийская',
     },
     {
         name: "Дима",
         img: "/Avatars/media/img-1.jpg",
         country: "Германия",
         gender: 'Муж',
+        race: 'Экваториальная',
     },
     {
         name: "Ava Adams",
         img: "/Avatars/media/img-1.jpg",
         country: "Америка",
         gender: 'Жен',
+        race: 'Азиатско-американская',
     },
     {
         name: "Максим",
         img: "/Avatars/media/img-1.jpg",
-        country: "Германия",
+        country: "Россия",
         gender: 'Муж',
+        race: 'Экваториальная',
     },
     {
         name: "Евген",
         img: "/Avatars/media/img-1.jpg",
         country: "Россия",
         gender: 'Муж',
+        race: 'Экваториальная',
     },
     {
         name: "Анастасия",
         img: "/Avatars/media/img-1.jpg",
         country: "Россия",
         gender: 'Жен',
+        race: 'Экваториальная',
     },
 ]
 
@@ -102,6 +111,21 @@ const GENDER = [
     },
     {
         gender: "Жен",
+    },
+]
+
+const RACE = [
+    {
+        race: "Все",
+    },
+    {
+        race: "Евразийская",
+    },
+    {
+        race: "Азиатско-американская",
+    },
+    {
+        race: "Экваториальная",
     },
 ]
 

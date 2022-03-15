@@ -26,6 +26,8 @@ class AvatarFilter extends Component {
     }
 
     render() {
+        const all = this.props.all
+
         const countrySelect = this.props.country.map((item, key) =>
             <option key={key} value={item}>{item}</option>
         )
@@ -44,9 +46,9 @@ class AvatarFilter extends Component {
                     value={this.props.name}
                     onChange={this.handleNameChange}
                 />
-                <select onChange={this.handleCountryChange}>{countrySelect}</select>
-                <select onChange={this.handleGenderChange}>{genderSelect}</select>
-                <select onChange={this.handleRaceChange}>{raceSelect}</select>
+                <select onChange={this.handleCountryChange}><option value={all}>{all}</option>{countrySelect}</select>
+                <select onChange={this.handleGenderChange}><option value={all}>{all}</option>{genderSelect}</select>
+                <select onChange={this.handleRaceChange}><option value={all}>{all}</option>{raceSelect}</select>
             </div>
         )
     }

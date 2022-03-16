@@ -1,0 +1,72 @@
+{
+    "all": "Все",
+    "country": ["Франция", "Германия", "Америка"],
+    "gender": ["Муж", "Жен"],
+    "race": ["Евразийская", "Азиатско-американская", "Экваториальная"],
+    "humans": [
+        {   
+            "id": 1,
+            "name": "Fred",
+            "img": "/Avatars/media/img-1.jpg",
+            "country": "Россия",
+            "gender": "Муж",
+            "race": "Азиатско-американская"
+        },
+        {
+            "id": 2,
+            "name": "Никита",
+            "img": "/Avatars/media/img-1.jpg",
+            "country": "Франция",
+            "gender": "Муж",
+            "race": "Евразийская"
+        },
+        {
+            "id": 3,
+            "name": "Саша Грей",
+            "img": "/Avatars/media/img-1.jpg",
+            "country": "Россия",
+            "gender": "Жен",
+            "race": "Евразийская"
+        },
+        {
+            "id": 4,
+            "name": "Дима",
+            "img": "/Avatars/media/img-1.jpg",
+            "country": "Германия",
+            "gender": "Муж",
+            "race": "Экваториальная"
+        },
+        {
+            "id": 5,
+            "name": "Ava Adams",
+            "img": "/Avatars/media/img-1.jpg",
+            "country": "Америка",
+            "gender": "Жен",
+            "race": "Азиатско-американская"
+        },
+        {
+            "id": 6,
+            "name": "Максим",
+            "img": "/Avatars/media/img-1.jpg",
+            "country": "Россия",
+            "gender": "Муж",
+            "race": "Экваториальная"
+        },
+        {
+            "id": 7,
+            "name": "Евген",
+            "img": "/Avatars/media/img-1.jpg",
+            "country": "Россия",
+            "gender": "Муж",
+            "race": "Экваториальная"
+        },
+        {
+            "id": 8,
+            "name": "Анастасия",
+            "img": "/Avatars/media/img-1.jpg",
+            "country": "Россия",
+            "gender": "Жен",
+            "race": "Экваториальная"
+        }
+    ]
+}

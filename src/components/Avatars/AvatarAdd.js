@@ -1,13 +1,14 @@
 import React, { Component } from "react"
+import axios from "axios"
 
 class AvatarAdd extends Component {
-    constructor(props) {
-        super(props)
-        // this.handleAvatarsAdd = this.handleAvatarsAdd.bind(this)
+    componentDidMount() {
+        axios.post('http://spasdeveloper.ru/my-app/php/avatars.php').then(res => {
+            console.log(res.data);
+        });
     }
 
     render() {
-        console.log(this.props.humans);
         return <div></div>
     }
 }

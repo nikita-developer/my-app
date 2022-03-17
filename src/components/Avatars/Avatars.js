@@ -1,6 +1,6 @@
 
 import React, {Component} from "react"
-// import AvatarAdd from "./AvatarAdd"
+import AvatarAdd from "./AvatarAdd"
 import AvatarCard from "./AvatarCard"
 import AvatarFilter from "./AvatarFilter"
 import axios from "axios"
@@ -22,11 +22,10 @@ class Avatars extends Component {
         this.handleCountryChange = this.handleCountryChange.bind(this)
         this.handleGenderChange = this.handleGenderChange.bind(this)
         this.handleRaceChange = this.handleRaceChange.bind(this)
-        this.handleAvatarsAdd = this.handleAvatarsAdd.bind(this)
     }
 
     componentDidMount() {
-        axios.post('http://spasdeveloper.ru/my-app/php/avatars/avatars.php').then(response => {
+        axios.get('http://spasdeveloper.ru/my-app/php/avatars/avatars.php').then(response => {
             this.setState({
                 humans: response.data,
                 loading: true,
@@ -58,28 +57,18 @@ class Avatars extends Component {
         })
     }
 
-    handleAvatarsAdd(humans) {
-        this.setState({
-            humans: humans
-        })
-    }
-
     render() {
-        console.log(this.state);
         if(this.state.loading) {
             return(
                 <div className="avatars">
                     <div className="avatars__header">
-                        {/* <AvatarAdd
-                            humans={this.avatars.humans}
-                            onAvatarsAdd={this.handleAvatarsAdd}
-                        /> */}
+                        <AvatarAdd />
                         <AvatarFilter 
                             all={avatars.all}
-                            name={this.state.useName}
                             country={avatars.country}
                             gender={avatars.gender}
                             race={avatars.race}
+                            name={this.state.useName}
                             onNameChange={this.handleNameChange}
                             onCountryChange={this.handleCountryChange}
                             onGenderChange={this.handleGenderChange}

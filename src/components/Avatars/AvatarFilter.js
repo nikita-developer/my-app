@@ -26,7 +26,6 @@ class AvatarFilter extends Component {
     }
 
     render() {
-        console.log(this.props);
         const all = this.props.all
 
         const countrySelect = this.props.country.map((item, key) =>

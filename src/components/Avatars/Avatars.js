@@ -3,6 +3,7 @@ import React, {Component} from "react"
 import AvatarAdd from "./AvatarAdd"
 import AvatarCard from "./AvatarCard"
 import AvatarFilter from "./AvatarFilter"
+import Modal from "../Modal/Modal"
 import axios from "axios"
 import "./Avatars.scss"
 
@@ -16,12 +17,17 @@ class Avatars extends Component {
             useGender: avatars.all,
             useRace: avatars.all,
             loading: false,
+            modal: false,
         }
 
         this.handleNameChange = this.handleNameChange.bind(this)
         this.handleCountryChange = this.handleCountryChange.bind(this)
         this.handleGenderChange = this.handleGenderChange.bind(this)
         this.handleRaceChange = this.handleRaceChange.bind(this)
+
+        // modal
+        this.handleClickOpenModal = this.handleClickOpenModal.bind(this)
+        this.handleClickCloseModal = this.handleClickCloseModal.bind(this)
     }
 
     componentDidMount() {
@@ -57,12 +63,25 @@ class Avatars extends Component {
         })
     }
 
+    handleClickOpenModal() {
+        this.setState({
+            modal: true
+        })
+    }
+
+    handleClickCloseModal() {
+        this.setState({
+            modal: false
+        })
+    }
+
     render() {
         if(this.state.loading) {
             return(
                 <div className="avatars">
                     <div className="avatars__header">
-                        <AvatarAdd />
+                        <button className="avatars__btn btn" onClick={this.handleClickOpenModal} >Добавить</button>
+                        {this.state.modal && <Modal component={<AvatarAdd />} onClickClose={this.handleClickCloseModal} />}
                         <AvatarFilter 
                             all={avatars.all}
                             country={avatars.country}

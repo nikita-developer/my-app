@@ -16,13 +16,10 @@ class Modal extends Component {
         return(
             <div className="modal">
                 <div className="modal__body">
-                    <div 
-                        className="modal__close"
-                        onClick={this.handleClickCloseModal}
-                        >
+                    <div className="modal__close" onClick={this.handleClickCloseModal}>
                         <div className="modal__close-body"></div>
-                        {this.props.component}
                     </div>
+                    {this.props.component}
                 </div>
             </div>
         )

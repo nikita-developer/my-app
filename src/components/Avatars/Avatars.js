@@ -10,11 +10,11 @@ class Avatars extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            avatars: "",
+            humans: "",
             useName: "",
-            useCountry: "",
-            useGender: "",
-            useRace: "",
+            useCountry: avatars.all,
+            useGender: avatars.all,
+            useRace: avatars.all,
             loading: false,
         }
 
@@ -26,13 +26,10 @@ class Avatars extends Component {
     }
 
     componentDidMount() {
-        axios.post('http://spasdeveloper.ru/my-app/php/avatars.php').then(res => {
+        axios.post('http://spasdeveloper.ru/my-app/php/avatars/avatars.php').then(response => {
             this.setState({
-                avatars: res.data,
+                humans: response.data,
                 loading: true,
-                useCountry: res.data.all,
-                useGender: res.data.all,
-                useRace: res.data.all,
             })
         })
     }
@@ -78,11 +75,11 @@ class Avatars extends Component {
                             onAvatarsAdd={this.handleAvatarsAdd}
                         /> */}
                         <AvatarFilter 
-                            all={this.state.avatars.all}
-                            name={this.state.name}
-                            country={this.state.avatars.country}
-                            gender={this.state.avatars.gender}
-                            race={this.state.avatars.race}
+                            all={avatars.all}
+                            name={this.state.useName}
+                            country={avatars.country}
+                            gender={avatars.gender}
+                            race={avatars.race}
                             onNameChange={this.handleNameChange}
                             onCountryChange={this.handleCountryChange}
                             onGenderChange={this.handleGenderChange}
@@ -92,11 +89,11 @@ class Avatars extends Component {
                     <div className="avatars__body">
                         <AvatarCard 
                             name={this.state.useName}
-                            all={this.state.avatars.all}
+                            all={avatars.all}
                             country={this.state.useCountry}
                             gender={this.state.useGender}
                             race={this.state.useRace}
-                            humans={this.state.avatars.humans} 
+                            humans={this.state.humans} 
                         />
                     </div>
                 </div>
@@ -107,77 +104,11 @@ class Avatars extends Component {
     }
 }
 
-// const avatars = {
-//     "all": "Все",
-//     "country": ["Франция", "Германия", "Америка"],
-//     "gender": ["Муж", "Жен"],
-//     "race": ["Евразийская", "Азиатско-американская", "Экваториальная"],
-//     "humans": [
-//         {   
-//             "id": 1,
-//             "name": "Fred",
-//             "img": "/Avatars/media/img-1.jpg",
-//             "country": "Россия",
-//             "gender": "Муж",
-//             "race": "Азиатско-американская"
-//         },
-//         {
-//             "id": 2,
-//             "name": "Никита",
-//             "img": "/Avatars/media/img-1.jpg",
-//             "country": "Франция",
-//             "gender": "Муж",
-//             "race": "Евразийская"
-//         },
-//         {
-//             "id": 3,
-//             "name": "Саша Грей",
-//             "img": "/Avatars/media/img-1.jpg",
-//             "country": "Россия",
-//             "gender": "Жен",
-//             "race": "Евразийская"
-//         },
-//         {
-//             "id": 4,
-//             "name": "Дима",
-//             "img": "/Avatars/media/img-1.jpg",
-//             "country": "Германия",
-//             "gender": "Муж",
-//             "race": "Экваториальная"
-//         },
-//         {
-//             "id": 5,
-//             "name": "Ava Adams",
-//             "img": "/Avatars/media/img-1.jpg",
-//             "country": "Америка",
-//             "gender": "Жен",
-//             "race": "Азиатско-американская"
-//         },
-//         {
-//             "id": 6,
-//             "name": "Максим",
-//             "img": "/Avatars/media/img-1.jpg",
-//             "country": "Россия",
-//             "gender": "Муж",
-//             "race": "Экваториальная"
-//         },
-//         {
-//             "id": 7,
-//             "name": "Евген",
-//             "img": "/Avatars/media/img-1.jpg",
-//             "country": "Россия",
-//             "gender": "Муж",
-//             "race": "Экваториальная"
-//         },
-//         {
-//             "id": 8,
-//             "name": "Анастасия",
-//             "img": "/Avatars/media/img-1.jpg",
-//             "country": "Россия",
-//             "gender": "Жен",
-//             "race": "Экваториальная"
-//         }
-//     ]
-// }
+let avatars = {
+    all: "Все",
+    country: ["Франция", "Германия", "Америка"],
+    gender: ["Муж", "Жен"],
+    race: ["Евразийская", "Азиатско-американская", "Экваториальная"]
+}
 
 export default Avatars

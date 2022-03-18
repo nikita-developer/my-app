@@ -17,7 +17,7 @@ class Avatars extends Component {
             useGender: avatars.all,
             useRace: avatars.all,
             loading: false,
-            modal: false,
+            isOpenModal: false,
         }
 
         this.handleNameChange = this.handleNameChange.bind(this)
@@ -65,13 +65,13 @@ class Avatars extends Component {
 
     handleClickOpenModal() {
         this.setState({
-            modal: true
+            isOpenModal: true
         })
     }
 
-    handleClickCloseModal() {
+    handleClickCloseModal(isOpenModal) {
         this.setState({
-            modal: false
+            isOpenModal: isOpenModal
         })
     }
 
@@ -80,8 +80,15 @@ class Avatars extends Component {
             return(
                 <div className="avatars">
                     <div className="avatars__header">
-                        <button className="avatars__btn btn" onClick={this.handleClickOpenModal} >Добавить</button>
-                        {this.state.modal && <Modal component={<AvatarAdd />} onClickClose={this.handleClickCloseModal} />}
+                        <button 
+                            className="avatars__btn btn" 
+                            onClick={this.handleClickOpenModal}
+                        >Добавить</button>
+                        {this.state.isOpenModal && 
+                            <Modal 
+                                component={<AvatarAdd />} 
+                                onClickCloseModal={this.handleClickCloseModal}
+                        />}
                         <AvatarFilter 
                             all={avatars.all}
                             country={avatars.country}

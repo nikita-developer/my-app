@@ -18,12 +18,17 @@ class Avatars extends Component {
             useRace: avatars.all,
             loading: false,
             isOpenModal: false,
+            defaultName: "",
+            defaultCountry: "",
+            defaultGender: "",
+            defaultRace: "",
         }
 
         this.handleNameChange = this.handleNameChange.bind(this)
         this.handleCountryChange = this.handleCountryChange.bind(this)
         this.handleGenderChange = this.handleGenderChange.bind(this)
         this.handleRaceChange = this.handleRaceChange.bind(this)
+        this.handlerDefaultDataAdd = this.handlerDefaultDataAdd.bind(this)
 
         // modal
         this.handleClickOpenModal = this.handleClickOpenModal.bind(this)
@@ -75,31 +80,41 @@ class Avatars extends Component {
         })
     }
 
+    handlerDefaultDataAdd(defaultCountry) {
+        this.setState({
+            defaultCountry: defaultCountry,
+        })
+    }
+
     render() {
         if(this.state.loading) {
             return(
                 <div className="avatars">
                     <div className="avatars__header">
-                        <button 
-                            className="avatars__btn btn" 
-                            onClick={this.handleClickOpenModal}
-                        >Добавить</button>
-                        {this.state.isOpenModal && 
-                            <Modal 
-                                component={<AvatarAdd />} 
-                                onClickCloseModal={this.handleClickCloseModal}
-                        />}
-                        <AvatarFilter 
-                            all={avatars.all}
-                            country={avatars.country}
-                            gender={avatars.gender}
-                            race={avatars.race}
-                            name={this.state.useName}
-                            onNameChange={this.handleNameChange}
-                            onCountryChange={this.handleCountryChange}
-                            onGenderChange={this.handleGenderChange}
-                            onRaceChange={this.handleRaceChange}
-                        />
+                        <div className="avatars__header-item">
+                            <button 
+                                className="avatars__btn btn" 
+                                onClick={this.handleClickOpenModal}
+                            >Добавить</button>
+                            {this.state.isOpenModal && 
+                                <Modal 
+                                    component={<AvatarAdd onDefaultDataAdd={this.handlerDefaultDataAdd} data={this.state} all={avatars.all} country={avatars.country} gender={avatars.gender} race={avatars.race} />}
+                                    onClickCloseModal={this.handleClickCloseModal}
+                            />}
+                        </div>
+                        <div className="avatars__header-item">
+                            <AvatarFilter 
+                                all={avatars.all}
+                                country={avatars.country}
+                                gender={avatars.gender}
+                                race={avatars.race}
+                                name={this.state.useName}
+                                onNameChange={this.handleNameChange}
+                                onCountryChange={this.handleCountryChange}
+                                onGenderChange={this.handleGenderChange}
+                                onRaceChange={this.handleRaceChange}
+                            />
+                        </div>
                     </div>
                     <div className="avatars__body">
                         <AvatarCard 

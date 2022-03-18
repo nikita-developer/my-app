@@ -13,11 +13,7 @@ class AvatarAdd extends Component {
             gender: "",
             race: "",
         }
-
-        this.handlerDefaultDataAdd = this.handlerDefaultDataAdd.bind(this)
     }
-
-    // replace(/\s+/g, " ").trim()
 
     handleChangeCountry = (e) => {
         this.setState({
@@ -37,23 +33,29 @@ class AvatarAdd extends Component {
         })
     }
 
-    handlerDefaultDataAdd(c) {
-        this.props.onDefaultDataAdd(c.target.value)
+    handlerDefaultDataAddCountry = (c) => {
+        this.props.onDefaultDataAddCountry(c.target.value)
+    }
+
+    handlerDefaultDataAddGender = (g) => {
+        this.props.onDefaultDataAddGender(g.target.value)
+    }
+
+    handlerDefaultDataAddRace = (r) => {
+        this.props.onDefaultDataAddRace(r.target.value)
     }
 
     render() {
-        // console.log(this.props);
-
         const countrySelect = this.props.country.map((item, key) =>
-            (item === this.props.data.defaultCountry) ? <option selected key={key} value={item}>{item}</option> : <option key={key} value={item}>{item}</option>
+            <option key={key} value={item}>{item}</option>
         )
 
         const genderSelect = this.props.gender.map((item, key) =>
-            (item === this.props.data.defaultGender) ? <option selected key={key} value={item}>{item}</option> : <option key={key} value={item}>{item}</option>
+            <option key={key} value={item}>{item}</option>
         )
 
         const raceSelect = this.props.race.map((item, key) =>
-            (item === this.props.data.defaultRace) ? <option selected key={key} value={item}>{item}</option> : <option key={key} value={item}>{item}</option>
+            <option key={key} value={item}>{item}</option>
         )
 
         return(
@@ -67,13 +69,25 @@ class AvatarAdd extends Component {
                         <input type="text" className="form__field"/>
                     </div>
                     <div className="avatars__modal-field">
-                        <select className="form__select" onChange={(e, c) => {this.handleChangeCountry(e, c); this.handlerDefaultDataAdd(e, c)}}><option selected disabled value="Выберите страну">Выберите страну</option>{countrySelect}</select>
+                        <select 
+                            defaultValue={this.props.data.defaultCountry} 
+                            className="form__select" 
+                            onChange={(e, c) => {this.handleChangeCountry(e, c); this.handlerDefaultDataAddCountry(e, c)}}
+                            >{countrySelect}</select>
                     </div>
                     <div className="avatars__modal-field">
-                        <select className="form__select" onChange={this.handleChangeGender}>{genderSelect}</select>
+                        <select 
+                            defaultValue={this.props.data.defaultGender} 
+                            className="form__select" 
+                            onChange={(e, g) => {this.handleChangeGender(e, g); this.handlerDefaultDataAddGender(e, g)}}
+                            >{genderSelect}</select>
                     </div>
                     <div className="avatars__modal-field">
-                        <select className="form__select" onChange={this.handleChangeRace}>{raceSelect}</select>
+                        <select 
+                            defaultValue={this.props.data.defaultRace} 
+                            className="form__select" 
+                            onChange={(e, r) => {this.handleChangeRace(e, r); this.handlerDefaultDataAddRace(e, r)}}
+                            >{raceSelect}</select>
                     </div>
                     <button className="btn">Загрузить</button>
                 </div>

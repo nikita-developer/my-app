@@ -18,7 +18,6 @@ class Avatars extends Component {
             useRace: avatars.all,
             loading: false,
             isOpenModal: false,
-            defaultName: "",
             defaultCountry: "",
             defaultGender: "",
             defaultRace: "",
@@ -28,7 +27,6 @@ class Avatars extends Component {
         this.handleCountryChange = this.handleCountryChange.bind(this)
         this.handleGenderChange = this.handleGenderChange.bind(this)
         this.handleRaceChange = this.handleRaceChange.bind(this)
-        this.handlerDefaultDataAdd = this.handlerDefaultDataAdd.bind(this)
 
         // modal
         this.handleClickOpenModal = this.handleClickOpenModal.bind(this)
@@ -80,9 +78,21 @@ class Avatars extends Component {
         })
     }
 
-    handlerDefaultDataAdd(defaultCountry) {
+    handlerDefaultDataAddCountry = (c) => {
         this.setState({
-            defaultCountry: defaultCountry,
+            defaultCountry: c
+        })
+    }
+
+    handlerDefaultDataAddGender = (g) => {
+        this.setState({
+            defaultGender: g
+        })
+    }
+
+    handlerDefaultDataAddRace = (r) => {
+        this.setState({
+            defaultRace: r,
         })
     }
 
@@ -98,7 +108,17 @@ class Avatars extends Component {
                             >Добавить</button>
                             {this.state.isOpenModal && 
                                 <Modal 
-                                    component={<AvatarAdd onDefaultDataAdd={this.handlerDefaultDataAdd} data={this.state} all={avatars.all} country={avatars.country} gender={avatars.gender} race={avatars.race} />}
+                                    component={
+                                        <AvatarAdd 
+                                        onDefaultDataAddCountry={this.handlerDefaultDataAddCountry} 
+                                        onDefaultDataAddGender={this.handlerDefaultDataAddGender} 
+                                        onDefaultDataAddRace={this.handlerDefaultDataAddRace} 
+                                        data={this.state} 
+                                        all={avatars.all} 
+                                        country={avatars.country} 
+                                        gender={avatars.gender} 
+                                        race={avatars.race} />
+                                    }
                                     onClickCloseModal={this.handleClickCloseModal}
                             />}
                         </div>

@@ -18,9 +18,7 @@ class Avatars extends Component {
             useRace: avatars.all,
             loading: false,
             isOpenModal: false,
-            defaultCountry: "",
-            defaultGender: "",
-            defaultRace: "",
+            countryRepeat: false,
         }
 
         this.handleNameChange = this.handleNameChange.bind(this)
@@ -78,21 +76,9 @@ class Avatars extends Component {
         })
     }
 
-    handlerDefaultDataAddCountry = (c) => {
+    handlerCountryRepeat = (countryRepeat) => {
         this.setState({
-            defaultCountry: c
-        })
-    }
-
-    handlerDefaultDataAddGender = (g) => {
-        this.setState({
-            defaultGender: g
-        })
-    }
-
-    handlerDefaultDataAddRace = (r) => {
-        this.setState({
-            defaultRace: r,
+            countryRepeat: countryRepeat
         })
     }
 
@@ -110,14 +96,11 @@ class Avatars extends Component {
                                 <Modal 
                                     component={
                                         <AvatarAdd 
-                                        onDefaultDataAddCountry={this.handlerDefaultDataAddCountry} 
-                                        onDefaultDataAddGender={this.handlerDefaultDataAddGender} 
-                                        onDefaultDataAddRace={this.handlerDefaultDataAddRace} 
-                                        data={this.state} 
-                                        all={avatars.all} 
-                                        country={avatars.country} 
-                                        gender={avatars.gender} 
-                                        race={avatars.race} />
+                                            onCountryRepeat={this.handlerCountryRepeat}
+                                            country={avatars.country}
+                                            countryRepeat={this.state.countryRepeat}
+                                            countryDefault={avatars.countryDefault}
+                                        />
                                     }
                                     onClickCloseModal={this.handleClickCloseModal}
                             />}
@@ -157,8 +140,11 @@ class Avatars extends Component {
 let avatars = {
     all: "Все",
     country: ["Франция", "Германия", "Америка"],
+    countryDefault: "Выберите страну",
     gender: ["Муж", "Жен"],
-    race: ["Евразийская", "Азиатско-американская", "Экваториальная"]
+    genderDefault: "Выберите пол",
+    race: ["Евразийская", "Азиатско-американская", "Экваториальная"],
+    raceDefault: "Выберите расу",
 }
 
 export default Avatars

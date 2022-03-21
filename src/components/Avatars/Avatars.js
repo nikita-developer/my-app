@@ -19,6 +19,8 @@ class Avatars extends Component {
             loading: false,
             isOpenModal: false,
             countryRepeat: false,
+            genderRepeat: false,
+            raceRepeat: false,
         }
 
         this.handleNameChange = this.handleNameChange.bind(this)
@@ -76,9 +78,21 @@ class Avatars extends Component {
         })
     }
 
-    handlerCountryRepeat = (countryRepeat) => {
+    handleCountryRepeat = (countryRepeat) => {
         this.setState({
             countryRepeat: countryRepeat
+        })
+    }
+
+    handleGenderRepeat = (genderRepeat) => {
+        this.setState({
+            genderRepeat: genderRepeat
+        })
+    }
+
+    handleRaceRepeat = (raceRepeat) => {
+        this.setState({
+            raceRepeat: raceRepeat
         })
     }
 
@@ -96,10 +110,18 @@ class Avatars extends Component {
                                 <Modal 
                                     component={
                                         <AvatarAdd 
-                                            onCountryRepeat={this.handlerCountryRepeat}
+                                            onCountryRepeat={this.handleCountryRepeat}
+                                            onGenderRepeat={this.handleGenderRepeat}
+                                            onRaceRepeat={this.handleRaceRepeat}
                                             country={avatars.country}
+                                            gender={avatars.gender}
+                                            race={avatars.race}
                                             countryRepeat={this.state.countryRepeat}
+                                            genderRepeat={this.state.genderRepeat}
+                                            raceRepeat={this.state.raceRepeat}
                                             countryDefault={avatars.countryDefault}
+                                            genderDefault={avatars.genderDefault}
+                                            raceDefault={avatars.raceDefault}
                                         />
                                     }
                                     onClickCloseModal={this.handleClickCloseModal}

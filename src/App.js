@@ -1,21 +1,21 @@
 
-import React, { Component } from 'react';
+import React from 'react';
 import Header from "./components/Header/Header"
 import Footer from "./components/Footer/Footer"
-import Main from "./components/Main/Main"
+// import Main from "./components/Main/Main"
+import Authorization from './components/Authorization/Authorization';
 
-class App extends Component {
-	render() {
-		return(
-			<div className="App">
-				<div className='page'>
-					<Header />
-					<Main />
-					<Footer />
-				</div>
+function App() {
+	return(
+		<div className="App">
+			<div className='page'>
+				<Header />
+				{/* <Main /> */}
+				<Authorization />
+				<Footer />
 			</div>
-		);
-	}
+		</div>
+	);
 }
 
 export default App;

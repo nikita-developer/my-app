@@ -3,9 +3,10 @@ import React from "react"
 import Button from "../../ui/Button/Button"
 import Input from "../../ui/Input/Input"
 
-function LogIn() {
+export default function LogIn(props) {
     return(
         <form className="login login_center">
+            {/* открываем форму регистрации */}
             <div className="login__title">Вход</div>
             <div className="login__body">
                 <div className="login__field">
@@ -24,10 +25,12 @@ function LogIn() {
                     />
                 </div>
                 <Button className="login__btn" text="Войти" />
-                <Button className="login__btn" text="Зарегистрироваться" />
+                <Button 
+                    className="login__btn" 
+                    text="Зарегистрироваться"
+                    onClick={() => props.isOpen(false)}
+                />
             </div>
         </form>
     )
 }
-
-export default LogIn

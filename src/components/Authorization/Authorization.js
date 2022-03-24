@@ -1,17 +1,17 @@
 
-import React, {useState} from "react"
+import React, {useContext} from "react"
 import LogIn from "./LogIn"
 import Registration from "./Registration"
+import Context from "../../context"
 
-export default function Authorization(props) {
-    const [isOpen, setlogIsOpen] = useState(props.isOpen || true)
-    const handleIsOpen = (isOpen) => {setlogIsOpen(isOpen)}
+export default function Authorization() {
+    const {authorization, authorizationChange} = useContext(Context)
 
     return(
         <div className="authorization">
             <div className="authorization__body">
-                <div className="authorization__modal">
-                    {isOpen ? <LogIn isOpen={handleIsOpen} /> : <Registration isOpen={handleIsOpen} />}
+                <div className="authorization__modal" onClick={() => authorizationChange(false)}>
+                    {authorization ? <LogIn /> : <Registration />}
                 </div>
             </div>
         </div>

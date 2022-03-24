@@ -1,12 +1,11 @@
 
 import React from "react"
-import Button from "../../ui/Button/Button"
 import Input from "../../ui/Input/Input"
 
-export default function Registration(props) {
+export default function Registration() {
+
     return(
         <div className="login login_center">
-            {/* открываем форму входа */}
             <div className="login__title">Регистрация</div>
             <div className="login__body">
                 <div className="login__field">
@@ -24,12 +23,8 @@ export default function Registration(props) {
                         placeholder="Введите пароль" 
                     />
                 </div>
-                <Button className="login__btn" text="Зарегистрироваться" />
-                <Button 
-                    className="login__btn" 
-                    text="Войти" 
-                    onClick={() => props.isOpen(true)}
-                />
+                <button className="btn login__btn">Зарегистрироваться</button>
+                <button className="btn login__btn">Войти</button>
             </div>
         </div>
     )

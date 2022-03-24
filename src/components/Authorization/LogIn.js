@@ -1,12 +1,11 @@
 
 import React from "react"
-import Button from "../../ui/Button/Button"
 import Input from "../../ui/Input/Input"
 
-export default function LogIn(props) {
+export default function LogIn() {
+
     return(
-        <form className="login login_center">
-            {/* открываем форму регистрации */}
+        <div className="login login_center">
             <div className="login__title">Вход</div>
             <div className="login__body">
                 <div className="login__field">
@@ -24,13 +23,9 @@ export default function LogIn(props) {
                         placeholder="Введите пароль" 
                     />
                 </div>
-                <Button className="login__btn" text="Войти" />
-                <Button 
-                    className="login__btn" 
-                    text="Зарегистрироваться"
-                    onClick={() => props.isOpen(false)}
-                />
+                <button className="btn login__btn">Войти</button>
+                <button className="btn login__btn">Зарегистрироваться</button>
             </div>
-        </form>
+        </div>
     )
 }

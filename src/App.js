@@ -8,14 +8,16 @@ import Context from "./context"
 
 function App() {
 	// состояние авторизации(скрыта или показана)
-	const [authorization, setAuthorization] = useState(true)
+	const [authorization, setAuthorization] = useState(false)
+	const [logInOut, setLogInOut] = useState(true)
 	// меняем состояние авторизации
-    const authorizationChange = (authorization) => {setAuthorization(authorization)}
+    const authorizationChange = (authorization, logInOut) => {setAuthorization(authorization); setLogInOut(logInOut)}
 
 	// объект с контекстом
 	const value = {
 		authorization: authorization,
-		authorizationChange: authorizationChange
+		authorizationChange: authorizationChange,
+		logInOut: logInOut,
 	}
 
 	return(

@@ -1,8 +1,10 @@
 
-import React from "react"
+import React, {useContext} from "react"
 import Input from "../../ui/Input/Input"
+import Context from "../../context"
 
 export default function LogIn() {
+    const {authorizationChange} = useContext(Context)
 
     return(
         <div className="login login_center">
@@ -24,7 +26,10 @@ export default function LogIn() {
                     />
                 </div>
                 <button className="btn login__btn">Войти</button>
-                <button className="btn login__btn">Зарегистрироваться</button>
+                <button 
+                    className="btn login__btn"
+                    onClick={() => authorizationChange(true, false)}
+                >Зарегистрироваться</button>
             </div>
         </div>
     )

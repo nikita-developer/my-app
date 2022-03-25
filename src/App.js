@@ -20,6 +20,12 @@ function App() {
 		logInOut: logInOut,
 	}
 
+	// useEffect(() => {
+    //     axios.get('http://spasdeveloper.ru/my-app/php/authorization/authorization.php').then(response => {
+    //         setAuth(response.data)
+    //     })
+    // }, []);
+
 	return(
 		<Context.Provider value={value}>
 			<div className="App">

@@ -11,3 +11,9 @@ ReactDOM.render(
   </BrowserRouter>,
   document.getElementById('root')
 );
+
+// useEffect(() => {
+//     axios.get('http://spasdeveloper.ru/my-app/php/authorization/authorization.php').then(response => {
+//         setAuth(response.data)
+//     })
+// }, []);

@@ -1,41 +1,20 @@
 
-import React, {useState} from 'react';
+import React from 'react';
 import Header from "./components/Header/Header"
 import Footer from "./components/Footer/Footer"
-import Main from "./components/Main/Main"
-import Authorization from './components/Authorization/Authorization';
-import Context from "./context"
+// import Main from "./components/Main/Main"
+// import Authorization from './components/Authorization/Authorization';
 
 function App() {
-	// состояние авторизации(скрыта или показана)
-	const [authorization, setAuthorization] = useState(false)
-	const [logInOut, setLogInOut] = useState(true)
-	// меняем состояние авторизации
-    const authorizationChange = (authorization, logInOut) => {setAuthorization(authorization); setLogInOut(logInOut)}
-
-	// объект с контекстом
-	const value = {
-		authorization: authorization,
-		authorizationChange: authorizationChange,
-		logInOut: logInOut,
-	}
-
-	// useEffect(() => {
-    //     axios.get('http://spasdeveloper.ru/my-app/php/authorization/authorization.php').then(response => {
-    //         setAuth(response.data)
-    //     })
-    // }, []);
-
 	return(
-		<Context.Provider value={value}>
-			<div className="App">
-				<div className='page'>
-					<Header />
-					{authorization ? <Authorization /> : <Main />}
-					<Footer />
-				</div>
+		<div className="App">
+			<div className='page'>
+				<Header />
+				{/* <Authorization />
+				<Main /> */}
+				<Footer />
 			</div>
-		</Context.Provider>
+		</div>
 	);
 }
 

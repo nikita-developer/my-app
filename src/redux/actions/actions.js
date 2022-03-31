@@ -1,5 +1,12 @@
 
-import {COUNTER_ADD, COUNTER2_ADD, COUNTER_SUB, COUNTER_RESET, COUNTER_RANDOM} from './actionTypes'
+import {
+    COUNTER_ADD,
+    COUNTER2_ADD,
+    COUNTER_SUB,
+    COUNTER_RESET,
+    COUNTER_RANDOM,
+    AUTHORIZATION,
+} from './actionTypes'
 
 export function counter_add() {
     return {
@@ -29,5 +36,11 @@ export function counter_random(number) {
     return {
         type: COUNTER_RANDOM,
         payload: number,
+    }
+}
+
+export function authorization() {
+    return {
+        type: AUTHORIZATION
     }
 }

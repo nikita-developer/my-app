@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react'
 import {connect} from 'react-redux'
-import { counter2_add, counter_add, counter_random, counter_reset, counter_sub } from './redux/actions/actions';
+import { counter_add, counter_random, counter_reset, counter_sub } from './store/actions/counter';
 
 function Counter(props) {
     const [number, setNumber] = useState(0)
@@ -42,14 +42,12 @@ function Counter(props) {
 function mapStateToProps(state) {
     return {
         counter: state.counter.counter,
-        counter2: state.counter2.counter2,
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         counterAdd: () => dispatch(counter_add()),
-        counter2Add: () => dispatch(counter2_add()),
         counterSub: () => dispatch(counter_sub()),
         counterReset: () => dispatch(counter_reset()),
         counterRandom: (number) => dispatch(counter_random(number)),

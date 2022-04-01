@@ -1,14 +1,15 @@
-import {AUTHORIZATION} from "../actions/actionTypes"
+
+import {AUTH} from "../actions/actionTypes"
 
 const initialState = {
-    auth: '0'
+    auth: false
 }
 
 export default function auth(state = initialState, action) {
     switch(action.type) {
-        case AUTHORIZATION:
+        case AUTH:
             return {
-                auth: state.auth = '12'
+                auth: state.auth = true
             }
         default: return state
     }

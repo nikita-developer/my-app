@@ -2,39 +2,33 @@
 import React, {useState, useEffect} from 'react';
 import Header from "./components/Header/Header"
 import Footer from "./components/Footer/Footer"
-import Auth from './components/Auth/Auth'
-import axios from 'axios'
-import { connect } from 'react-redux';
-import { authorization } from './store/actions/auth';
+import Login from './components/Login/Login'
+import Main from './components/Main/Main'
 
 function App(props) {
-	useEffect(() => {
-		axios.get('http://spasdeveloper.ru/my-app/php/authorization/authorization.php').then(response => {
-			props.authSuccess()
-		})
-	}, []);
+	const [userSuccess, setUserSuccess] = useState(getCookie('user'))
 
-	return(
-		<div className="App">
-			<div className='page'>
-				<Header />
-				{props.auth && <Auth />}
-				<Footer />
+	if(userSuccess) {
+		return(
+			<div className="App">
+				<div className='page'>
+					<Header />
+					<Main />
+					<Footer />
+				</div>
 			</div>
-		</div>
-	);
-}
-
-function mapStateToProps(state) {
-	return {
-		auth: state.auth.auth
+		);
+	} else {
+		return <Login />
 	}
 }
 
-function mapDispatchToProps(dispatch) {
-	return {
-		authSuccess: () => dispatch(authorization()),
-	}
+// проверяем на существование кука
+function getCookie(name) {
+	var matches = document.cookie.match(new RegExp(
+		"(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+	));
+	return matches ? decodeURIComponent(matches[1]) : undefined;
 }
 
-export default connect(mapStateToProps, mapDispatchToProps) (App);
+export default App;

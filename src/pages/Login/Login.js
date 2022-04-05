@@ -1,9 +1,16 @@
-import React from "react"
+import React, {useState} from "react"
 import './Login.scss'
+import axios from 'axios'
+import {connect} from 'react-redux'
+import {auth} from "../../store/actions/auth"
 
-function Login() {
+function Login(props) {
+    const [login, setLogin] = useState('')
+    const [password, setPassword] = useState('')
+    console.log(props);
+
     return(
-        <div className="login">
+        <form onSubmit={handleSubmit} className="login">
             <div className="login__box">
                 <div className="login__head">
                     <div className="login__title">Вход</div>
@@ -11,24 +18,65 @@ function Login() {
                 <div className="login__body">
                     <label className="login__label">
                         <div className="login__field-name">Логин</div>
-                        <input className="login__field field" placeholder="Введите логин" />
+                        <input 
+                            onChange={handleLogin} 
+                            className="login__field field" placeholder="Введите логин" 
+                        />
                         <div className="login__error">Нет такого логина</div>
                     </label>
                     <label className="login__label">
                         <div className="login__field-name">Пароль</div>
-                        <input className="login__field field" placeholder="Введите пароль" />
+                        <input 
+                            onChange={handlePssword} 
+                            className="login__field field" placeholder="Введите пароль" 
+                            type="password"
+                        />
                         <div className="login__error">Нет такого пароля</div>
                     </label>
                 </div>
                 <div className="login__footer">
-                    <button className="login__btn btn">Отправить</button>
+                    <button type="submit" className="login__btn btn">Отправить</button>
                 </div>
             </div>
-        </div>
+        </form>
     )
+
+    function handleSubmit (e) {
+        e.preventDefault()
+        if(login.length > 5 && login && login !== '') {
+            axios.post('http://spasdeveloper.ru/my-app/php/authorization/authorization.php', {
+                login,
+                password
+            }).then(function (response) {
+                props.authorization()
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    }
+
+    function handleLogin(e) {
+        setLogin(e.target.value.replace(/ +/g, ' ').trim().toLowerCase())
+    }
+
+    function handlePssword(e) {
+        setPassword(e.target.value)
+    }
 }
 
-export default Login
+function mapStateToProps(state) {
+    return {
+        auth: state.auth.auth,
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        authorization: () => dispatch(auth())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (Login)
 
 
 // useEffect(() => {

@@ -6,18 +6,35 @@ import About from '../../pages/About/About'
 import {Routes, Route} from 'react-router-dom';
 import './Main.scss'
 import Login from "../../pages/Login/Login";
+import { connect } from "react-redux";
 
-function Main() {
-    return(
-        <main className="main">
-            <Routes>
-                <Route path='/' element={<Home/>}/>
-                <Route path='/wiki' element={<Wiki/>}/>
-                <Route path='/about' element={<About/>}/>
-                <Route path='/login' element={<Login/>}/>
-            </Routes>
-        </main>
-    )
+function Main(props) {
+    if(props.auth) {
+        return(
+            <main className="main">
+                <Routes>
+                    <Route path='/' element={<Home/>}/>
+                    <Route path='/wiki' element={<Wiki/>}/>
+                    <Route path='/about' element={<About/>}/>
+                </Routes>
+            </main>
+        )
+    } else {
+        return(
+            <main className="main">
+                <Routes>
+                    <Route path='/' element={<Home/>}/>
+                    <Route path='/login' element={<Login/>}/>
+                </Routes>
+            </main>
+        )
+    }
 }
 
-export default Main
+function mapStateToProps(state) {
+    return {
+        auth: state.auth.auth
+    }
+}
+
+export default connect(mapStateToProps) (Main)

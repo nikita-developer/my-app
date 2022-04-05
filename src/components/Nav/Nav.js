@@ -10,6 +10,7 @@ class Nav extends Component {
                 <NavLink to="/" className="nav__link">Главная</NavLink>
                 <NavLink to="/about" className="nav__link">О нас</NavLink>
                 <NavLink to="/wiki" className="nav__link">База знаний</NavLink>
+                <NavLink to="/login" className="nav__link">Войти</NavLink>
             </nav>
         )
     }

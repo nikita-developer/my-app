@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import './scss/_variables.scss';
+import './scss/field.scss'
+import './scss/btn.scss'
 import App from './App';
 import {BrowserRouter} from 'react-router-dom';
 import {createStore} from 'redux'

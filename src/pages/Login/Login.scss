@@ -56,6 +56,16 @@
         margin-top: 5px;
     }
 
+    &__save-data {
+        display: flex;
+        align-items: center;
+
+        span {
+            font-size: 13px;
+            margin-left: 5px;
+        }
+    }
+
     .error {
         .login {
             &__error {

@@ -7,7 +7,8 @@ import {auth} from "../../store/actions/auth"
 function Login(props) {
     const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
-    console.log(props);
+    const [checkbox, setCheckbox] = useState('')
+    // console.log(props);
 
     return(
         <form onSubmit={handleSubmit} className="login">
@@ -33,6 +34,14 @@ function Login(props) {
                         />
                         <div className="login__error">Нет такого пароля</div>
                     </label>
+                    <label className="login__label login__save-data">
+                        <input 
+                            className="checkbox" 
+                            type="checkbox" 
+                            onChange={handleCheckbox}
+                        />
+                        <span>Сохранить логин и пароль</span>
+                    </label>
                 </div>
                 <div className="login__footer">
                     <button type="submit" className="login__btn btn">Отправить</button>
@@ -44,11 +53,9 @@ function Login(props) {
     function handleSubmit (e) {
         e.preventDefault()
         if(login.length > 5 && login && login !== '') {
-            axios.post('http://spasdeveloper.ru/my-app/php/authorization/authorization.php', {
-                login,
-                password
-            }).then(function (response) {
+            axios.post('http://spasdeveloper.ru/my-app/php/authorization/authorization.php').then(function (response) {
                 props.authorization()
+                console.log(response.data);
             }).catch(function (error) {
                 console.log(error);
             });
@@ -61,6 +68,10 @@ function Login(props) {
 
     function handlePssword(e) {
         setPassword(e.target.value)
+    }
+
+    function handleCheckbox(e) {
+        setCheckbox(e.target.checked)
     }
 }
 

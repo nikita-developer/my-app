@@ -53,8 +53,14 @@ function Login(props) {
     function handleSubmit (e) {
         e.preventDefault()
         if(login.length > 5 && login && login !== '') {
-            axios.post('http://spasdeveloper.ru/my-app/php/authorization/authorization.php').then(function (response) {
-                props.authorization()
+            axios({
+                method: 'POST',
+                url: 'http://spasdeveloper.ru/my-app/php/authorization/authorization.php',
+                headers: { 'content-type': 'application/x-www-form-urlencoded' },
+                data: {x: 1}
+            })
+            .then(function (response) {
+                // props.authorization()
                 console.log(response.data);
             }).catch(function (error) {
                 console.log(error);

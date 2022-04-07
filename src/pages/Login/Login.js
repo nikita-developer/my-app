@@ -7,7 +7,7 @@ import {auth} from "../../store/actions/auth"
 function Login(props) {
     const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
-    const [checkbox, setCheckbox] = useState('')
+    const [checkbox, setCheckbox] = useState(false)
     // console.log(props);
 
     return(
@@ -20,19 +20,21 @@ function Login(props) {
                     <label className="login__label">
                         <div className="login__field-name">Логин</div>
                         <input 
+                            name="login"
                             onChange={handleLogin} 
                             className="login__field field" placeholder="Введите логин" 
                         />
-                        <div className="login__error">Нет такого логина</div>
+                        <div className="login__error">Не меньше 5 символов</div>
                     </label>
                     <label className="login__label">
                         <div className="login__field-name">Пароль</div>
                         <input 
+                            name="password"
                             onChange={handlePssword} 
                             className="login__field field" placeholder="Введите пароль" 
                             type="password"
                         />
-                        <div className="login__error">Нет такого пароля</div>
+                        <div className="login__error">Не меньше 8 символов</div>
                     </label>
                     <label className="login__label login__save-data">
                         <input 
@@ -52,28 +54,54 @@ function Login(props) {
 
     function handleSubmit (e) {
         e.preventDefault()
-        if(login.length > 5 && login && login !== '') {
-            axios({
-                method: 'POST',
-                url: 'http://spasdeveloper.ru/my-app/php/authorization/authorization.php',
-                headers: { 'content-type': 'application/x-www-form-urlencoded' },
-                data: {x: 1}
-            })
-            .then(function (response) {
-                // props.authorization()
-                console.log(response.data);
-            }).catch(function (error) {
-                console.log(error);
-            });
+        if(login.length < 5 || !login || login == '') {
+            e.target.elements.login.classList.add('error')
+            return
         }
+
+        if(password.length < 8 || !password || password == '') {
+            e.target.elements.password.classList.add('error')
+            return
+        }
+
+        axios({
+            method: 'POST',
+            url: 'http://spasdeveloper.ru/my-app/php/authorization/authorization.php',
+            headers: { 'content-type': 'application/x-www-form-urlencoded' },
+            data: {
+                login: login,
+                password: password,
+            }
+        })
+        .then(function (response) {
+            if(response.data) {
+                props.authorization()
+            } else {
+                console.log(response.data);
+            }
+        }).catch(function (error) {
+            console.log(error);
+        });
     }
 
     function handleLogin(e) {
-        setLogin(e.target.value.replace(/ +/g, ' ').trim().toLowerCase())
+        let result = e.target.value.replace(/ +/g, ' ').trim().toLowerCase()
+        setLogin(result)
+        if(result.length < 5) {
+            e.target.classList.add('error')
+        } else {
+            e.target.classList.remove('error')
+        }
     }
 
     function handlePssword(e) {
-        setPassword(e.target.value)
+        let result = e.target.value
+        setPassword(result)
+        if(result.length < 8) {
+            e.target.classList.add('error')
+        } else {
+            e.target.classList.remove('error')
+        }
     }
 
     function handleCheckbox(e) {

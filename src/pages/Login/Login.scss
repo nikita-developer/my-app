@@ -30,6 +30,10 @@
         margin-bottom: 10px;
     }
 
+    &__field.error + .login__error {
+        display: inline-block;
+    }
+
     &__error {
         position: absolute;
         right: 0;
@@ -59,6 +63,7 @@
     &__save-data {
         display: flex;
         align-items: center;
+        margin-top: 15px;
 
         span {
             font-size: 13px;
